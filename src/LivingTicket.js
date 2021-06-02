@@ -1,5 +1,47 @@
 import React, { useEffect, useRef } from "react";
 
+const fps = 60 / 30;
+
+const timeSlots = {
+  startTime: 0.0,
+  endTime: 600.0,
+  events: [
+    {
+      eventName: "cinema open",
+      startTime: 0.0,
+      color: "#e699ff"
+    },
+    {
+      eventName: "preshow",
+      startTime: 70.0,
+      color: "#ffc266"
+    },
+    {
+      eventName: "showTime",
+      startTime: 150.0,
+      color: "#80ffcc"
+    },
+    {
+      eventName: "credits",
+      startTime: 300.0,
+      color: "blue"
+    }
+  ]
+};
+
+const percentage = {
+  value: parseFloat(0.0),
+  min: parseFloat(timeSlots.startTime),
+  max: parseFloat(timeSlots.endTime)
+};
+
+const radius = 140;
+const circum = 2 * Math.PI * radius;
+const lineWidth = 12;
+const gap = 0;
+const START_RADIAN = parseFloat(-0.2);
+const END_RADIAN = parseFloat(1.2);
+
 function normalizeValueToRange(
   value,
   rangeMin,
@@ -79,48 +121,6 @@ const LivingTicket = () => {
   const wrapper = {
     border: "1px red solid"
   };
-
-  const fps = 60 / 30;
-
-  const timeSlots = {
-    startTime: 0.0,
-    endTime: 600.0,
-    events: [
-      {
-        eventName: "cinema open",
-        startTime: 0.0,
-        color: "#e699ff"
-      },
-      {
-        eventName: "preshow",
-        startTime: 70.0,
-        color: "#ffc266"
-      },
-      {
-        eventName: "showTime",
-        startTime: 150.0,
-        color: "#80ffcc"
-      },
-      {
-        eventName: "credits",
-        startTime: 300.0,
-        color: "blue"
-      }
-    ]
-  };
-
-  const percentage = {
-    value: parseFloat(0.0),
-    min: parseFloat(timeSlots.startTime),
-    max: parseFloat(timeSlots.endTime)
-  };
-
-  const radius = 140;
-  const circum = 2 * Math.PI * radius;
-  const lineWidth = 12;
-  const gap = 0;
-  const START_RADIAN = parseFloat(-0.2);
-  const END_RADIAN = parseFloat(1.2);
 
   const canvas = useRef(null);
 
