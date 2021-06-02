@@ -65,7 +65,7 @@ function findEventEndTime(currentIndex, timeSlots) {
   return parseFloat(timeSlots.endTime);
 }
 
-function render() {
+function render(ctx) {
   var progress = normalizeValueToRange(
     percentage.value,
     percentage.min,
@@ -126,8 +126,7 @@ const LivingTicket = () => {
 
   useEffect(() => {
     const ctx = canvas.current.getContext("2d");
-    ctx.fillStyle = "hsl(0, 0%, 95%)";
-    ctx.fillRect(0, 0, 10, 10);
+    render(ctx);
   }, []);
 
   return (
